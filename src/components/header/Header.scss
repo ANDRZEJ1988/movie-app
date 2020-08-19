@@ -1,0 +1,61 @@
+.header {
+  //position: fixed;
+  height: 80px;
+  width: 100%;
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+  &-logo {
+    height: 60px;
+    padding: 10px;
+  
+  }
+
+  &-menu {
+    display: flex;
+    padding: 10px;
+
+    &-link{
+      margin: 0 40px;
+
+    }
+     }
+
+}
+
+
+
+//
+//.switchhhhhh{
+//  //transform: translate(-50%, -50%);
+//  top: 50%;
+//  left: 50%;
+//
+//}
+//.tooogle {
+//  width: 80px;
+//  height: 40px;
+//-webkit-appearance: none ;
+//  outline: none;
+//  background: #c6c6c6;
+//  border-radius: 20px;
+//  transition: 0.5s;
+//  box-shadow: 0 0 5px rgba(0,0,0,.2);
+//
+//}
+//input [type="checkbox"]:checked {
+//  background: lightgreen;
+//}
+input [type="checkbox"] {
+  width: 100px;
+  height: 40px;
+  background: #1890ff;
+  -webkit-appearance: none;
+  border-radius: 20px;
+  outline: none;
+  transition: .4s;
+
+}

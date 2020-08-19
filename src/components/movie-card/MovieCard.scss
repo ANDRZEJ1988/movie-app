@@ -1,0 +1,61 @@
+.darks {
+  width: 100%;
+  background-color: darkslategrey;
+  display: flex;
+}
+
+.container {
+  justify-content: space-around;
+  box-shadow: 5px 5px 115px -14px black;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 15px;
+}
+
+.movie {
+  height: 100%;
+  border: 1px solid;
+  border-radius: 5px;
+
+  &-img {
+    width: 100%;
+  }
+
+  &-title {
+    text-align: center;
+    font-size: 26px;
+    color: white;
+
+    h3 {
+      color: white;
+    }
+  }
+
+  &-movie-gen {
+
+    li {
+      font-family: 'Open Sans', sans-serif;
+      color: darken(#e7e7e7, 40%);
+      font-weight: 600;
+    }
+  }
+
+  .movie-description {
+    margin: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: darken(white, 30%);
+    text-align: justify;
+    line-height: 1.3;
+  }
+}
+
+
+
+
+
+
+
+
+

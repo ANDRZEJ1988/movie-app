@@ -1,0 +1,17 @@
+.footer {
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background-color: darkslategrey;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &-media {
+    &-icons {
+      width: 25px;
+      height: 25px;
+      margin: 0 10px;
+    }
+  }
+}

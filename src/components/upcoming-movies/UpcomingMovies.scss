@@ -1,0 +1,28 @@
+.pictures {
+  height: 200px;
+  width: 100%;
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-arrows {
+    height: 50px;
+  }
+
+  &-image {
+    height: 200px;
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+  }
+}
+
+.dark {
+  background-color: darkslategrey;
+}
+
+h1 {
+  color: lightgray;
+  text-align: center;
+}

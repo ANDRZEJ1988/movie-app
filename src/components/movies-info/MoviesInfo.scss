@@ -1,0 +1,101 @@
+.dark {
+  //background-color: lightgray;
+  background-color: darkslategrey;
+}
+
+.load {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box-one {
+  width: 350px;
+  justify-content: space-around;
+  box-shadow: 5px 5px 115px -14px black;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 15px;
+}
+
+.cardss {
+  height: 100%;
+  border: 1px solid;
+  border-radius: 5px;
+
+  &-img {
+    width: 100%;
+  }
+
+  &-title {
+    text-align: center;
+    font-size: 26px;
+    color: white;
+
+    h3 {
+      color: white;
+    }
+  }
+
+  &-movie-gen {
+
+    li {
+      font-family: 'Open Sans', sans-serif;
+      color: darken(#e7e7e7, 40%);
+      font-weight: 600;
+
+    }
+  }
+}
+
+.sort {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  h3 {
+    color: #1890ff;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+}
+
+.my-buttons {
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  outline: none;
+  background-color: darkslategrey;
+  cursor: pointer;
+  border-radius: 80px;
+  text-align: center;
+  font-size: 16px;
+  transition-duration: 0.4s;
+
+}
+
+.my-buttons:hover {
+  background-color: mediumturquoise;
+  color: black;
+}
+
+.my-buttons:active {
+  background-color: mediumturquoise;
+  color: black;
+}
+
+.my-buttons:focus {
+  background-color: mediumturquoise;
+  color: black;
+}
+
+.pagin {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}

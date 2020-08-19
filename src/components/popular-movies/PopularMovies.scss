@@ -1,0 +1,30 @@
+.box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 40%;
+  border-radius: 5px;
+
+  &-img {
+    width: 100%;
+  }
+
+  &-title {
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+
+    &-genre {
+      text-align: center;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+  }
+}
