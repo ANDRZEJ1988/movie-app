@@ -2,25 +2,23 @@ import React from 'react';
 import './App.css';
 import {Footer} from "../footer/Footer";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
-import {NewHeader} from "../new-header/NewHeader";
+import {Header} from "../header/Header";
 import {DarkThemeWrapper} from "../dark-theme-wrapper/DarkThemeWrapper";
-import {NewMovielist} from "../new-movielist/NewMovielist";
+import {Movielist} from "../movielist/Movielist";
 import {MovieCard} from "../movie-card/MovieCard";
 import {NewMovies} from "../new-movies/NewMovies";
 import {PopularMovies} from "../popular-movies/PopularMovies";
 import {SearchMovies} from "../search-movies/SearchMovies";
 
-
-
 export function App() {
     return (
         <DarkThemeWrapper>
             <Router>
-                <NewHeader/>
+                <Header/>
                 <Switch>
                     <Route path="/" exact
                            render={(routerProps) => {
-                               return <NewMovielist {...routerProps}/>
+                               return <Movielist {...routerProps}/>
                            }}/>
                     <Route path="/movie/:title" exact
                            render={(routerProps) => {
