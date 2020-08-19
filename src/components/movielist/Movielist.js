@@ -1,14 +1,14 @@
 import React, {useContext, useEffect} from 'react';
 import {apiKey} from "../../constants/Menu";
 import {useDispatch} from "react-redux";
-import './NewMovielist.scss';
+import './Movielist.scss';
 import {DarkThemeContext} from "../../dark-theme-context/DarkThemeContext";
 import {UpcomingMovies} from "../upcoming-movies/UpcomingMovies";
 import {requestFunction} from "../../function";
 import {MoviesInfo} from "../movies-info/MoviesInfo";
 import {Pagination} from "antd";
 
-export const NewMovielist = () => {
+export const Movielist = () => {
     const dispatch = useDispatch();
     const getMovies = async (current) => {
         dispatch({type: "START_LOADING", payload: true});
