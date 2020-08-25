@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useCallback, useContext, useEffect} from 'react';
 import {useDispatch} from "react-redux";
 import {apiKey} from "../../constants/Menu";
 import {requestFunction} from "../../function";
@@ -8,7 +8,7 @@ import {Pagination} from "antd";
 
 export const NewMovies = () => {
     const dispatch = useDispatch();
-    const getMovies = async (current) => {
+    const getMovies = useCallback(async (current) => {
         dispatch({type: "START_LOADING", payload: true});
         const results = await requestFunction(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${current}`);
         const copyResults = [];
@@ -17,11 +17,11 @@ export const NewMovies = () => {
         }
         dispatch({type: "GET_MOVIES", payload: copyResults});
         dispatch({type: "END_LOADING", payload: false});
-    }
+    }, [dispatch]);
     const [isDarkTheme] = useContext(DarkThemeContext);
     useEffect(() => {
         getMovies();
-    },[]);
+    }, [getMovies]);
 
     return (
         <div className={`${isDarkTheme && 'dark'}`}>

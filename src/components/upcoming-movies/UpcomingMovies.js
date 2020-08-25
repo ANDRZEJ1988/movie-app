@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {apiKey} from "../../constants/Menu";
 import './UpcomingMovies.scss';
@@ -9,10 +9,10 @@ import Right from "../../assets/arrow_right.png";
 
 export const UpcomingMovies = () => {
     const [imageUrlSecondPart, setImageUrlSecondPart] = useState([]);
-     const imageUrlFirstPart = useSelector(state => state.imageUrlFirstPart);
+    const imageUrlFirstPart = useSelector(state => state.imageUrlFirstPart);
     const isLoading = useSelector(state => state.isLoading);
     const dispatch = useDispatch();
-    const getUpcomingMovies = async () => {
+    const getUpcomingMovies = useCallback(async () => {
         const results = await requestFunction(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`);
         const secondPart = [];
         results.map(value =>
@@ -23,7 +23,7 @@ export const UpcomingMovies = () => {
         });
         setImageUrlSecondPart(secondPartWithoutNull);
         dispatch({type: "END_LOADING", payload: false});
-    }
+    }, [dispatch]);
     const moviesUrl = imageUrlSecondPart.map(value => imageUrlFirstPart + value);
     const imageRefFirst = useRef();
     const imageRefSecond = useRef();
@@ -50,7 +50,7 @@ export const UpcomingMovies = () => {
 
     useEffect(() => {
         getUpcomingMovies();
-    }, []);
+    }, [getUpcomingMovies]);
     return (
         <div>
             {(isLoading && loading()) ||
