@@ -3,12 +3,13 @@ import {useSelector} from "react-redux";
 import './MovieCard.scss';
 import {DarkThemeContext} from "../../dark-theme-context/DarkThemeContext";
 import {loading} from "../loading/Loading";
+import {cardSelector, genreSelector, imgCardUrlSelector, isLoadingSelector} from "../../store/selectors";
 
 export const MovieCard = () => {
-    const card = useSelector(state => state.card);
-    const genre = useSelector(state => state.genre);
-    const imageUrlFirstPart = useSelector(state => state.imageUrlFirstPart);
-    const isLoading = useSelector(state => state.isLoading);
+    const card = useSelector(cardSelector);
+    const genre = useSelector(genreSelector);
+    const imgCardUrl = useSelector(imgCardUrlSelector);
+    const isLoading = useSelector(isLoadingSelector);
     const matchGenre = (value) => {
         return value.map(id => {
             return genre.map(genr => {
@@ -27,7 +28,7 @@ export const MovieCard = () => {
             <div className="container">
                 <div className="movie">
                     <div>
-                        <img className="movie-img" src={imageUrlFirstPart + card.backdrop_path}
+                        <img className="movie-img" src={imgCardUrl + card.backdrop_path}
                              alt="зображення фільму"/>
                     </div>
                     <div className="movie-title">

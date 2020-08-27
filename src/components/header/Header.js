@@ -9,6 +9,7 @@ import {requestFunction} from "../../function";
 import {useHistory} from 'react-router-dom';
 import {Input} from 'antd';
 import 'antd/dist/antd.css';
+import {strings} from "../../strings/strings";
 
 export const Header = () => {
     const dispatch = useDispatch();
@@ -17,7 +18,8 @@ export const Header = () => {
     const serchMovie = async (movieName) => {
         dispatch({type: "START_LOADING", payload: true});
         if (movieName.length === 0) {
-            alert("Введіть назву фільма");
+            // alert("Введіть назву фільма");
+            alert(strings.enterMovie);
             dispatch({type: "END_LOADING", payload: false});
             return
         }
@@ -27,7 +29,8 @@ export const Header = () => {
             if (element.poster_path !== null) copyResults.push(element)
         }
         if (copyResults.length === 0) {
-            alert("Жодного фільму за введеною назвою не знайдено");
+            // alert("Жодного фільму за введеною назвою не знайдено");
+            alert(strings.notFound);
         }
         dispatch({type: "SEARCH_MOVIE", payload: copyResults});
         dispatch({type: "END_LOADING", payload: false});
@@ -36,6 +39,9 @@ export const Header = () => {
     const [isDarkTheme, setIsDarkTheme] = useContext(DarkThemeContext);
     const toogleTheme = () => {
         setIsDarkTheme(!isDarkTheme);
+    }
+    const changeLanguage = () => {
+        strings.setLanguage('ru');
     }
     return (
         <div className="header">
@@ -52,6 +58,9 @@ export const Header = () => {
             <div className="toggle" onClick={toogleTheme}>
                 <input className="toggleInput" type="checkbox"/>
                 <label className="onbtn">{isDarkTheme ? 'Темна тема' : 'Світла тема'}</label>
+            </div>
+            <div>
+                <button onClick={changeLanguage}>change language</button>
             </div>
         </div>
     );

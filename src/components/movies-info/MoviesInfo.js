@@ -4,15 +4,22 @@ import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from 'react-router-dom';
 import './MoviesInfo.scss';
 import {DarkThemeContext} from "../../dark-theme-context/DarkThemeContext";
+import {
+    movieListSelector,
+    imageUrlFirstPartSelector,
+    genreSelector,
+    isLoadingSelector,
+    sortByAlphabetSelector, sortByPopularSelector, sortByRateSelector
+} from "../../store/selectors";
 
 export const MoviesInfo = () => {
     const [isDarkTheme] = useContext(DarkThemeContext);
     const dispatch = useDispatch();
     const history = useHistory();
-    const movieList = useSelector(state => state.movieList);
-    const imageUrlFirstPart = useSelector(state => state.imageUrlFirstPart);
-    const genre = useSelector(state => state.genre);
-    const isLoading = useSelector(state => state.isLoading);
+    const movieList = useSelector(movieListSelector);
+    const imageUrlFirstPart = useSelector(imageUrlFirstPartSelector);
+    const genre = useSelector(genreSelector);
+    const isLoading = useSelector(isLoadingSelector);
     const render = () => {
         return (movieList.map(value => {
             return (<div key={value.id} className="box-one" onClick={() => showCard(value)}>
@@ -52,19 +59,16 @@ export const MoviesInfo = () => {
             })
         })
     };
+    const byAlphabet = useSelector(sortByAlphabetSelector);
     const sortByAlphabet = () => {
-        const copy = movieList.slice();
-        const byAlphabet = copy.sort((a, b) => a.title > b.title ? 1 : -1);
         dispatch({type: "BY_ALPHABET", payload: byAlphabet});
     };
+    const byPopular = useSelector(sortByPopularSelector);
     const sortByPopular = () => {
-        const copy = movieList.slice();
-        const byPopular = copy.sort((a, b) => a.popularity > b.popularity ? -1 : 1);
         dispatch({type: "BY_POPULAR", payload: byPopular});
     };
+    const byRate = useSelector(sortByRateSelector);
     const sortByRate = () => {
-        const copy = movieList.slice();
-        const byRate = copy.sort((a, b) => a.vote_average > b.vote_average ? -1 : 1);
         dispatch({type: "BY_RATE", payload: byRate});
     };
     return (

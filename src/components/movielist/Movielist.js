@@ -20,8 +20,10 @@ export const Movielist = () => {
         dispatch({type: "GET_MOVIES", payload: copyResults});
         const images = await requestFunction(`https://api.themoviedb.org/3/configuration?api_key=${apiKey}`);
         const {base_url, backdrop_sizes} = images;
-        const firstPartUrl = base_url + backdrop_sizes[3];
+        const firstPartUrl = base_url + backdrop_sizes[0];
+        const imgCardUrl = base_url + backdrop_sizes[3];
         dispatch({type: "GET_IMAGE", payload: firstPartUrl});
+        dispatch({type: "IMAGE_CARD", payload: imgCardUrl});
         const genres = await requestFunction(`https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&language=en-US`);
         dispatch({type: "GET_GENRE", payload: genres});
         dispatch({type: "END_LOADING", payload: false});

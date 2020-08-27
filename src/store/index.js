@@ -6,8 +6,9 @@ const initialState = {
     isLoading: false,
     imageUrlFirstPart: '',
     card: [],
-    search:[],
-   };
+    search: [],
+    imgCardUrl: ''
+};
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -33,7 +34,9 @@ export const reducer = (state = initialState, action) => {
             return {...state, movieList: action.payload};
         case 'SHOW_CARD':
             return {...state, card: action.payload};
-        default:
+        case 'IMAGE_CARD':
+            return {...state, imgCardUrl: action.payload};
+                    default:
             return state;
     }
 }

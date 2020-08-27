@@ -4,13 +4,14 @@ import {apiKey} from "../../constants/Menu";
 import './UpcomingMovies.scss';
 import {loading} from "../loading/Loading";
 import {requestFunction} from "../../function";
-import Left from "../../assets/arrow_left.png";
-import Right from "../../assets/arrow_right.png";
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import {imageUrlFirstPartSelector, isLoadingSelector} from "../../store/selectors";
 
 export const UpcomingMovies = () => {
     const [imageUrlSecondPart, setImageUrlSecondPart] = useState([]);
-    const imageUrlFirstPart = useSelector(state => state.imageUrlFirstPart);
-    const isLoading = useSelector(state => state.isLoading);
+    const imageUrlFirstPart = useSelector(imageUrlFirstPartSelector);
+    const isLoading = useSelector(isLoadingSelector);
     const dispatch = useDispatch();
     const getUpcomingMovies = useCallback(async () => {
         const results = await requestFunction(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=1`);
@@ -57,12 +58,12 @@ export const UpcomingMovies = () => {
             <div className="divka">
                 <h1>Скоро на екранах</h1>
                 <div className="pictures">
-                    <img src={Left} className="pictures-arrows" onClick={sliderLeft} alt="arrow-left"/>
+                    <ArrowBackIosIcon color="disabled" fontSize="large" onClick={sliderLeft}/>
                     <img ref={imageRefFirst} className="pictures-image" src={moviesUrl[0]} alt="зображення фільму"/>
                     <img ref={imageRefSecond} className="pictures-image" src={moviesUrl[1]} alt="зображення фільму"/>
                     <img ref={imageRefThird} className="pictures-image" src={moviesUrl[2]} alt="зображення фільму"/>
                     <img ref={imageRefThourth} className="pictures-image" src={moviesUrl[3]} alt="зображення фільму"/>
-                    <img src={Right} className="pictures-arrows" onClick={sliderRight} alt="arrow-right"/>
+                    <ArrowForwardIosIcon color="disabled" fontSize="large" onClick={sliderRight}/>
                 </div>
             </div>}
         </div>
