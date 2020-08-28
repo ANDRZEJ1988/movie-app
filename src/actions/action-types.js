@@ -1,0 +1,11 @@
+export const START_LOADING="START_LOADING";
+export const END_LOADING="END_LOADING";
+export const SEARCH_MOVIE="SEARCH_MOVIE";
+export const GET_MOVIES="GET_MOVIES";
+export const GET_IMAGE="GET_IMAGE";
+export const IMAGE_CARD="IMAGE_CARD";
+export const GET_GENRE="GET_GENRE";
+export const SHOW_CARD="SHOW_CARD";
+export const BY_ALPHABET="BY_ALPHABET";
+export const BY_POPULAR="BY_POPULAR";
+export const BY_RATE="BY_RATE";

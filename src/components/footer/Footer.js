@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {media} from "../../constants/Menu";
 import './Footer.scss';
+import {strings} from "../../strings/strings";
+import {DarkThemeContext} from "../../dark-theme-context/DarkThemeContext";
 
 export const Footer = () => {
+    const [isDarkTheme] = useContext(DarkThemeContext);
     return (
-        <div className="footer">
-            <div className="footer-media">Ми в соціальаних мережах:</div>
+        <div className={`${isDarkTheme && 'darks'} footer`}>
+            <div className="footer-media">{strings.socialNetwork}</div>
             <div className="footer-media">
                 {
                     media.map(value => {

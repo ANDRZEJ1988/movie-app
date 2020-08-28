@@ -4,6 +4,7 @@ import './MovieCard.scss';
 import {DarkThemeContext} from "../../dark-theme-context/DarkThemeContext";
 import {loading} from "../loading/Loading";
 import {cardSelector, genreSelector, imgCardUrlSelector, isLoadingSelector} from "../../store/selectors";
+import {strings} from "../../strings/strings";
 
 export const MovieCard = () => {
     const card = useSelector(cardSelector);
@@ -35,9 +36,9 @@ export const MovieCard = () => {
                         <h3>{card.title}</h3>
                     </div>
                     <ul className="movie-movie-gen">
-                        <li>Жанр: {matchGenre(card.genre_ids)}</li>
-                        <li>Дата виходу - {card.release_date}</li>
-                        <li>Рейтинг - {card.vote_average}</li>
+                        <li>{strings.genre}{matchGenre(card.genre_ids)}</li>
+                        <li>{strings.date}{card.release_date}</li>
+                        <li>{strings.rate}{card.vote_average}</li>
                     </ul>
                     <p className="movie-description">{card.overview}</p>
                 </div>

@@ -1,15 +1,10 @@
 import React from 'react';
 import './App.css';
 import {Footer} from "../footer/Footer";
-import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import {Header} from "../header/Header";
 import {DarkThemeWrapper} from "../dark-theme-wrapper/DarkThemeWrapper";
-import {Movielist} from "../movielist/Movielist";
-import {MovieCard} from "../movie-card/MovieCard";
-import {NewMovies} from "../new-movies/NewMovies";
-import {PopularMovies} from "../popular-movies/PopularMovies";
-import {SearchMovies} from "../search-movies/SearchMovies";
-
+import {Navigation} from "../navigation/Navigation";
 
 
 export function App() {
@@ -17,33 +12,12 @@ export function App() {
         <DarkThemeWrapper>
             <Router>
                 <Header/>
-                <Switch>
-                    <Route path="/" exact
-                           render={(routerProps) => {
-                               return <Movielist {...routerProps}/>
-                           }}/>
-                    <Route path="/movie/:title" exact
-                           render={(routerProps) => {
-                               return <MovieCard {...routerProps}/>
-                           }}/>
-                    <Route path="/new-movies" exact
-                           render={(routerProps) => {
-                               return <NewMovies {...routerProps}/>
-                           }}/>
-                    <Route path="/popular" exact
-                           render={(routerProps) => {
-                               return <PopularMovies {...routerProps}/>
-                           }}/>
-                    <Route path="/search" exact
-                           render={(routerProps) => {
-                               return <SearchMovies {...routerProps}/>
-                           }}/>
-                    <Redirect from="*" to="/" exact />
-                                    </Switch>
+                <Navigation/>
                 <Footer/>
             </Router>
         </DarkThemeWrapper>
     )
 }
+
 export default App;
 
