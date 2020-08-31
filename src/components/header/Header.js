@@ -50,7 +50,6 @@ export const Header = () => {
                     <Option value="uk">Українська</Option>
                     <Option value="ru">Русский</Option>
                 </Select>
-
             </div>
         </div>
     );

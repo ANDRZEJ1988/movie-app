@@ -62,6 +62,5 @@ export const UpcomingMovies = () => {
             </div>}
         </div>
     );
-
 }
 
