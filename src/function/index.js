@@ -21,23 +21,23 @@ export const requestFunction = async (argument) => {
     }
 };
 export const movieSeach = async (movieName, dispatch, history) => {
-     dispatch(startLoadingAction());
-        if (movieName.length === 0) {
-            alert(strings.enterMovie);
-            dispatch(endLoadingAction());
-            return
-        }
-        const results = await requestFunction(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${movieName}&page=1&include_adult=false`);
-        const copyResults = [];
-        for (const element of results) {
-            if (element.poster_path !== null) copyResults.push(element)
-        }
-        if (copyResults.length === 0) {
-            alert(strings.notFound);
-        }
-        dispatch(searchMovieAction(copyResults));
+    dispatch(startLoadingAction());
+    if (movieName.length === 0) {
+        alert(strings.enterMovie);
         dispatch(endLoadingAction());
-        history.push("/search");
+        return
+    }
+    const results = await requestFunction(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${movieName}&page=1&include_adult=false`);
+    const copyResults = [];
+    for (const element of results) {
+        if (element.poster_path !== null) copyResults.push(element)
+    }
+    if (copyResults.length === 0) {
+        alert(strings.notFound);
+    }
+    dispatch(searchMovieAction(copyResults));
+    dispatch(endLoadingAction());
+    history.push("/search");
 };
 export const moviesGet = async (current, dispatch) => {
     dispatch(startLoadingAction());
