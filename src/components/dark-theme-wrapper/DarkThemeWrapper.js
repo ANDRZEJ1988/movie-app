@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
-import {DarkThemeContext} from "../../dark-theme-context/DarkThemeContext";
+import {DarkThemeContext, LanguageContext} from "../../dark-theme-context/DarkThemeContext";
 
-export const  DarkThemeWrapper =(props)=> {
-const [isDarkTheme, setIsDarkTheme]=useState(true);
-const {children}=props;
-        return (
-            <DarkThemeContext.Provider value={[isDarkTheme, setIsDarkTheme]}>
+export const DarkThemeWrapper = (props) => {
+    const [isDarkTheme, setIsDarkTheme] = useState(true);
+    const [language, setlanguage] = useState('en');
+    const {children} = props;
+    return (
+        <DarkThemeContext.Provider value={[isDarkTheme, setIsDarkTheme]}>
+            <LanguageContext.Provider value={[language, setlanguage]}>
                 {children}
-            </DarkThemeContext.Provider>
-        );
+            </LanguageContext.Provider>
+        </DarkThemeContext.Provider>
+    );
 }
 

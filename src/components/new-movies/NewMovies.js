@@ -1,31 +1,22 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useCallback, useContext, useEffect} from 'react';
 import {useDispatch} from "react-redux";
-import {apiKey} from "../../constants/Menu";
-import {requestFunction} from "../../function";
+import {getNewMovies,} from "../../function";
 import {MoviesInfo} from "../movies-info/MoviesInfo";
 import {DarkThemeContext} from "../../dark-theme-context/DarkThemeContext";
 import {Pagination} from "antd";
+import {strings} from "../../strings/strings";
 
 export const NewMovies = () => {
     const dispatch = useDispatch();
-    const getMovies = async (current) => {
-        dispatch({type: "START_LOADING", payload: true});
-        const results = await requestFunction(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${current}`);
-        const copyResults = [];
-        for (const element of results) {
-            if (element.poster_path !== null) copyResults.push(element)
-        }
-        dispatch({type: "GET_MOVIES", payload: copyResults});
-        dispatch({type: "END_LOADING", payload: false});
-    }
+    const getMovies = useCallback((current) => getNewMovies(current, dispatch), [dispatch]);
     const [isDarkTheme] = useContext(DarkThemeContext);
     useEffect(() => {
         getMovies();
-    },[]);
+    }, [getMovies]);
 
     return (
         <div className={`${isDarkTheme && 'dark'}`}>
-            <h1>Новинки</h1>
+            <h1>{strings.new}</h1>
             <div className="pagin">
                 <Pagination
                     defaultCurrent={1}
