@@ -8,6 +8,7 @@ import {MoviesInfo} from "../movies-info/MoviesInfo";
 import {Pagination} from "antd";
 
 export const Movielist = () => {
+    console.log('heelo');
     const dispatch = useDispatch();
     const getMovies = useCallback((current) => moviesGet(current, dispatch), [dispatch]);
     const [isDarkTheme] = useContext(DarkThemeContext);
