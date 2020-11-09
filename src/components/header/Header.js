@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {DarkThemeContext} from "../../dark-theme-context/DarkThemeContext";
 import {movieSeach} from "../../function";
 import {useHistory} from 'react-router-dom';
-import {Input, Select} from 'antd';
+import {Input, Select } from 'antd';
 import 'antd/dist/antd.css';
 import {strings} from "../../strings/strings";
 
@@ -28,6 +28,8 @@ export const Header = () => {
         strings.setLanguage(value);
         setlanguage(value);
     }
+
+
     return (
         <div className="header">
             <img src={Logo} className="header-logo" alt="logo"/>
@@ -51,6 +53,7 @@ export const Header = () => {
                     <Option value="ru">Русский</Option>
                 </Select>
             </div>
+
         </div>
     );
 }

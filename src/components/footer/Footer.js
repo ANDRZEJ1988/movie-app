@@ -13,7 +13,7 @@ export const Footer = () => {
                 {
                     media.map(value => {
                         return (
-                            <a href={value.href} key={value.src} className="footer-media">
+                            <a href={value.href} key={value.src} className="footer-media" target="blanket">
                                 <img src={value.src} alt={value.alt} className="footer-media-icons"/>
                             </a>
                         )
